@@ -1,0 +1,433 @@
+@font-face {
+  font-family: 'Perfect DOS VGA 437';
+  src: url('./fonts/PerfectDOSVGA437.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --cyber-green: #00ff00;
+  --cyber-amber: #ffaa00;
+  --cyber-white: #ffffff;
+  --cyber-gray: #c0c0c0;
+  --cyber-dark-gray: #808080;
+  --cyber-bg: #000000;
+  --cyber-bg-secondary: #1a1a1a;
+  --cyber-border: #c0c0c0;
+  --cyber-text: #00ff00;
+  --cyber-text-dim: #008800;
+  --cyber-glow: 0 0 10px var(--cyber-green);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--cyber-bg);
+  font-family: 'Perfect DOS VGA 437', 'Source Code Pro', 'Courier New', monospace;
+  overflow: hidden;
+  user-select: none;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.cyber-terminal {
+  width: 100%;
+  height: 100vh;
+  background: var(--cyber-bg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border: 3px outset var(--cyber-gray);
+  font-family: 'Perfect DOS VGA 437', 'Source Code Pro', 'Courier New', monospace;
+}
+
+/* 90s Style Terminal Header */
+.terminal-header {
+  background: linear-gradient(180deg, var(--cyber-gray) 0%, var(--cyber-dark-gray) 100%);
+  border-bottom: 2px inset var(--cyber-gray);
+  position: relative;
+}
+
+.terminal-title-bar {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px;
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
+  border-bottom: 1px solid #404040;
+}
+
+.terminal-title {
+  color: #000000;
+  font-family: 'Perfect DOS VGA 437', monospace;
+  font-weight: bold;
+  font-size: 11px;
+  text-shadow: 1px 1px 0px #ffffff;
+  padding-left: 4px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.control-btn {
+  width: 16px;
+  height: 14px;
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
+  border: 1px outset #c0c0c0;
+  color: #000000;
+  font-family: 'Perfect DOS VGA 437', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.control-btn:hover {
+  background: linear-gradient(180deg, #d0d0d0 0%, #909090 100%);
+}
+
+.control-btn:active {
+  border: 1px inset #c0c0c0;
+  background: linear-gradient(180deg, #a0a0a0 0%, #c0c0c0 100%);
+}
+
+.control-btn.close:hover {
+  background: linear-gradient(180deg, #ff8080 0%, #ff4040 100%);
+  color: #ffffff;
+}
+
+/* Terminal Body */
+.terminal-body {
+  flex: 1;
+  padding: 8px;
+  overflow-y: auto;
+  background: var(--cyber-bg);
+  position: relative;
+  font-size: 12px;
+  line-height: 1.2;
+  font-family: 'Perfect DOS VGA 437', 'Source Code Pro', 'Courier New', monospace;
+}
+
+.terminal-body::-webkit-scrollbar {
+  width: 16px;
+  background: var(--cyber-gray);
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border: 1px inset #c0c0c0;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
+  border: 1px outset #c0c0c0;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d0d0d0 0%, #909090 100%);
+}
+
+.terminal-body::-webkit-scrollbar-corner {
+  background: #c0c0c0;
+}
+
+.terminal-line {
+  margin: 1px 0;
+  animation: fadeInUp 0.2s ease-out;
+}
+
+.terminal-line.input {
+  color: var(--cyber-text);
+  text-shadow: var(--cyber-glow);
+  font-weight: bold;
+}
+
+.terminal-line.output {
+  color: var(--cyber-text-dim);
+  margin-left: 0;
+}
+
+.terminal-line pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: inherit;
+  margin: 0;
+  font-size: inherit;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Input Line - Fixed cursor positioning */
+.input-line {
+  display: flex;
+  align-items: baseline;
+  margin-top: 2px;
+  line-height: 1.2;
+  font-family: 'Perfect DOS VGA 437', 'Source Code Pro', 'Courier New', monospace;
+  font-size: 12px;
+}
+
+.prompt {
+  color: var(--cyber-green);
+  text-shadow: var(--cyber-glow);
+  font-weight: bold;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.input-container {
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  flex: 1;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: var(--cyber-green);
+  font-family: 'Perfect DOS VGA 437', 'Source Code Pro', 'Courier New', monospace;
+  font-size: 12px;
+  outline: none;
+  text-shadow: var(--cyber-glow);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  caret-color: transparent; /* Hide default cursor */
+}
+
+.input-display {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--cyber-green);
+  text-shadow: var(--cyber-glow);
+  font-family: 'Perfect DOS VGA 437', 'Source Code Pro', 'Courier New', monospace;
+  font-size: 12px;
+  white-space: pre;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cursor {
+  color: var(--cyber-green);
+  animation: blink 1s infinite;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* 90s Style Status Bar */
+.status-bar {
+  height: 18px;
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #404040;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 10px;
+  color: #000000;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #ffffff;
+  font-family: 'Perfect DOS VGA 437', 'Source Code Pro', 'Courier New', monospace;
+}
+
+.status-bar span {
+  border-right: 1px solid #808080;
+  border-left: 1px solid #ffffff;
+  padding: 0 6px;
+  background: linear-gradient(180deg, #d0d0d0 0%, #a0a0a0 100%);
+  border: 1px inset #c0c0c0;
+  margin: 1px;
+}
+
+.status-bar span:last-child {
+  border-right: none;
+}
+
+/* Visual Effects */
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(0, 255, 0, 0.03) 1px,
+    rgba(0, 255, 0, 0.03) 2px
+  );
+  pointer-events: none;
+  z-index: 1000;
+  animation: scanlines-move 0.1s linear infinite;
+}
+
+@keyframes scanlines-move {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(2px); }
+}
+
+.glitch-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  pointer-events: none;
+  animation: glitch 8s infinite;
+  z-index: 999;
+}
+
+@keyframes glitch {
+  0%, 98%, 100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  98.5% {
+    transform: translate(1px, 0);
+    filter: hue-rotate(90deg);
+  }
+  99% {
+    transform: translate(-1px, 0);
+    filter: hue-rotate(180deg);
+  }
+  99.5% {
+    transform: translate(0, 1px);
+    filter: hue-rotate(270deg);
+  }
+}
+
+/* Hover Effects */
+.terminal-line:hover {
+  background: rgba(0, 255, 0, 0.05);
+  border-left: 1px solid var(--cyber-green);
+  padding-left: 3px;
+  transition: all 0.1s ease;
+}
+
+/* Special styling for fragments and important text */
+.terminal-line.output:contains("FRAGMENT") {
+  color: var(--cyber-amber);
+  text-shadow: 0 0 5px var(--cyber-amber);
+}
+
+.terminal-line.output:contains("CONGRATULATIONS") {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff;
+  animation: celebration 1s ease-in-out;
+}
+
+@keyframes celebration {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* CRT Monitor Effect */
+.cyber-terminal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
+  z-index: 1001;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .terminal-body {
+    padding: 4px;
+    font-size: 11px;
+  }
+  
+  .terminal-title-bar {
+    height: 20px;
+  }
+  
+  .terminal-title {
+    font-size: 10px;
+  }
+
+  .control-btn {
+    width: 14px;
+    height: 12px;
+    font-size: 9px;
+  }
+}
+
+/* Special command highlights with proper 90s styling */
+.terminal-line.output pre:contains("═══") {
+  color: var(--cyber-white);
+  font-weight: bold;
+}
+
+.terminal-line.output pre:contains("FRAGMENT_") {
+  color: #ffff00;
+  text-shadow: 0 0 5px #ffff00;
+  font-weight: bold;
+}
+
+.terminal-line.output pre:contains("ACCESS GRANTED") {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
+  font-weight: bold;
+}
+
+.terminal-line.output pre:contains("MASTER KEY") {
+  color: #ff00ff;
+  text-shadow: 0 0 15px #ff00ff;
+  font-weight: bold;
+  animation: rainbow-glow 2s ease-in-out infinite;
+}
+
+@keyframes rainbow-glow {
+  0% { color: #ff00ff; text-shadow: 0 0 15px #ff00ff; }
+  25% { color: #00ffff; text-shadow: 0 0 15px #00ffff; }
+  50% { color: #ffff00; text-shadow: 0 0 15px #ffff00; }
+  75% { color: #00ff00; text-shadow: 0 0 15px #00ff00; }
+  100% { color: #ff00ff; text-shadow: 0 0 15px #ff00ff; }
+}
+
+.cyber-terminal,
+.terminal-body,
+.terminal-input,
+.input-display,
+.prompt {
+  font-family: 'Perfect DOS VGA 437', 'Source Code Pro', 'Courier New', monospace;
+}
