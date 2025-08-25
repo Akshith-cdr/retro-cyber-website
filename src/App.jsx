@@ -632,78 +632,80 @@ function App() {
   };
 
   return (
-    <div className="cyber-terminal">
-      {/* Terminal window header */}
-      <div className="terminal-header">
-        <div className="terminal-title-bar">
-          <span className="terminal-title">CYBER_TERMINAL_v1.337.90</span>
-          <div className="window-controls">
-            <button className="control-btn minimize">_</button>
-            <button className="control-btn maximize">□</button>
-            <button className="control-btn close">×</button>
-          </div>
-        </div>
-      </div>
-
-      {/* Terminal output/history area */}
-      <div className="terminal-body" ref={terminalRef}>
-        {terminalHistory.map((entry, index) => (
-          <div
-            key={index}
-            className={`terminal-line ${entry.type}`}
-            data-timestamp={entry.timestamp}
-          >
-            <pre>{entry.content}</pre>
-          </div>
-        ))}
-
-        {/* Terminal input line */}
-        <div className="input-line">
-          <span className="prompt">
-            {isAuthenticated ? "root" : "guest"}@retro_cyber:~$
-          </span>
-          <div className="input-container">
-            <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-              <input
-                ref={inputRef}
-                type="text"
-                value={currentInput}
-                onChange={(e) => setCurrentInput(e.target.value)}
-                className="terminal-input"
-                autoFocus
-                disabled={isTyping}
-              />
-            </form>
-            <div className="input-display">
-              {currentInput}
-              {showCursor && <span className="cursor">█</span>}
+    <div className="zoom-wrapper">
+      <div className="cyber-terminal">
+        {/* Terminal window header */}
+        <div className="terminal-header">
+          <div className="terminal-title-bar">
+            <span className="terminal-title">CYBER_TERMINAL_v1.337.90</span>
+            <div className="window-controls">
+              <button className="control-btn minimize">_</button>
+              <button className="control-btn maximize">□</button>
+              <button className="control-btn close">×</button>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Status bar with hidden fragment on hover */}
-      <div className="status-bar">
-        <span>RETRO CYBER WORLD BBS</span>
-        <span
-          className="user-status"
-          onMouseEnter={() => setShowGammaHint(true)}
-          onMouseLeave={() => setShowGammaHint(false)}
-          style={{ cursor: "pointer" }}
-        >
-          {isAuthenticated
-            ? showGammaHint
-              ? "31337" // Show fragment when hovered
-              : "USER: ROOT"
-            : "USER: GUEST"}
-        </span>
-        <span>BAUD: 9600</span>
-        <span>{new Date().toLocaleTimeString()}</span>
-      </div>
+        {/* Terminal output/history area */}
+        <div className="terminal-body" ref={terminalRef}>
+          {terminalHistory.map((entry, index) => (
+            <div
+              key={index}
+              className={`terminal-line ${entry.type}`}
+              data-timestamp={entry.timestamp}
+            >
+              <pre>{entry.content}</pre>
+            </div>
+          ))}
 
-      {/* Visual overlays for CRT/glitch effects */}
-      <div className="glitch-overlay"></div>
-      <div className="scanlines"></div>
+          {/* Terminal input line */}
+          <div className="input-line">
+            <span className="prompt">
+              {isAuthenticated ? "root" : "guest"}@retro_cyber:~$
+            </span>
+            <div className="input-container">
+              <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={currentInput}
+                  onChange={(e) => setCurrentInput(e.target.value)}
+                  className="terminal-input"
+                  autoFocus
+                  disabled={isTyping}
+                />
+              </form>
+              <div className="input-display">
+                {currentInput}
+                {showCursor && <span className="cursor">█</span>}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Status bar with hidden fragment on hover */}
+        <div className="status-bar">
+          <span>RETRO CYBER WORLD BBS</span>
+          <span
+            className="user-status"
+            onMouseEnter={() => setShowGammaHint(true)}
+            onMouseLeave={() => setShowGammaHint(false)}
+            style={{ cursor: "pointer" }}
+          >
+            {isAuthenticated
+              ? showGammaHint
+                ? "31337" // Show fragment when hovered
+                : "USER: ROOT"
+              : "USER: GUEST"}
+          </span>
+          <span>BAUD: 9600</span>
+          <span>{new Date().toLocaleTimeString()}</span>
+        </div>
+
+        {/* Visual overlays for CRT/glitch effects */}
+        <div className="glitch-overlay"></div>
+        <div className="scanlines"></div>
+      </div>
     </div>
   );
 }

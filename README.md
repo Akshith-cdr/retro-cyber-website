@@ -8,13 +8,15 @@ A retro-cyberpunk terminal interface inspired by 1990s hacker culture, featuring
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://your-deployed-site.com) | [Watch Demo Video](https://your-video-link.com)
+[View Live Demo](https://retro-cyber-website.vercel.app/)
+[View Live Video]()
 
 ## ✨ Features
 
 ### 🎨 Visual Design
 - **Neon Color Palette**: Electric green, cyber blue, magenta, purple
 - **Retro Terminal UI**: Authentic 1990s command-line interface
+- **Perfect DOS VGA 437 Font**: True DOS look and feel
 - **Visual Effects**: 
   - Scanline CRT monitor simulation
   - Glitch animations and hover effects
@@ -22,21 +24,22 @@ A retro-cyberpunk terminal interface inspired by 1990s hacker culture, featuring
   - Blinking cursor and typing animations
 
 ### 💻 Interactive Terminal
-- **Command System**: Full-featured terminal with 10+ commands
+- **Command System**: 15+ interactive commands with Unix-style functionality
+- **Progressive Authentication**: Multi-tier access control system
 - **Real-time Processing**: Live command execution and history
-- **Auto-completion**: Smart command suggestions
-- **Responsive Design**: Works on desktop and mobile devices
+- **Easter Eggs**: Konami code integration and hidden shortcuts
+- **Responsive Design**: Optimized for both desktop and mobile
 
 ### 🔍 Secret Key Challenge
-- **Multi-step Discovery**: Progressive puzzle solving
-- **Hidden Clues**: Scattered across different discovery methods
-- **Investigation Required**: No obvious placement, requires exploration
+- **Multi-step Discovery**: Progressive puzzle solving with clues hidden in terminal output, UI, and source code
+- **Hidden Clues**: Scattered across different investigation methods (terminal, hover, source, console)
+- **Investigation Required**: No obvious placement, requires exploration and deduction
 
 ## 🛠️ Technical Architecture
 
 ### Frontend Stack
-- **React 19.1.1**: Modern UI library with hooks
-- **Vite 7.1.2**: Fast build tool and dev server
+- **React 18+**: Modern UI library with hooks
+- **Vite**: Fast build tool and dev server
 - **CSS3**: Advanced animations and effects
 - **JavaScript ES6+**: Modern syntax and features
 
@@ -55,8 +58,8 @@ A retro-cyberpunk terminal interface inspired by 1990s hacker culture, featuring
 ### Quick Start
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/retro_cyber_world.git
-cd retro_cyber_world
+git clone https://github.com/Akshith-cdr/retro-cyber-website.git
+cd retro-cyber-website
 
 # Install dependencies
 npm install
@@ -72,7 +75,6 @@ npm run build
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint checks
 
 ## 🎮 How to Use
 
@@ -83,15 +85,19 @@ about    # Display system information
 whoami   # Show current user status
 ls       # List directory contents
 clear    # Clear terminal screen
-hack     # Begin the secret discovery journey
+finger   # User information lookup
+login    # Authenticate as root (see hints)
 ```
 
 ### Advanced Features
 ```bash
-matrix   # Activate matrix visual mode
-cat [file]   # Read file contents
-echo [text]  # Display custom text
-exit     # Terminate session
+netstat         # Display network connections
+telnet [host] [port]   # Connect to remote BBS (after root access)
+debug memory    # Dump memory contents (after root access)
+debug trace     # System call trace (after root access)
+cat [file]      # Read file contents (try /dev/hidden/vault)
+echo [text]     # Display custom text or enter the master key
+exit            # Terminate session
 ```
 
 ## 🕵️ Secret Key Discovery Guide
@@ -102,29 +108,30 @@ exit     # Terminate session
 ### Discovery Method
 The secret key challenge uses a **3-fragment system** requiring multiple investigation techniques:
 
-#### Step 1: Terminal Commands
-- Run `hack` command to initialize penetration protocols
-- Follow the hint to investigate the "hidden" directory
-- Execute `cat hidden/.secret` to reveal **Fragment 1: "NEON"**
+#### Step 1: Terminal Investigation
+- Run `finger root` for a password hint ("What do hackers drink at 3AM?")
+- Use `login coffee` to authenticate as root
+- Run `finger sysop` for a clue:  
+  *"It's the kind of color that glows brightest in the dark, and defined the look of every cyberpunk cityscape."*  
+  (Answer: **NEON**)
 
-#### Step 2: Source Code Investigation
-- Open browser Developer Tools (F12)
-- Check the Console tab for ASCII art and hidden messages
-- Discover **Fragment 2: "CYBER"** in console logs
+#### Step 2: Network & Source Clues
+- Run `netstat` to find a suspicious connection on port 31337
+- Use `telnet 127.0.0.1 31337` to connect to the BBS and reveal:  
+  **FRAGMENT_BETA: The second key is 'MATRIX'**
 
-#### Step 3: HTML Source Inspection
-- View page source code (Ctrl+U)
-- Look for HTML comments containing hidden fragments
-- Find **Fragment 3: "1337"** in HTML comments
+#### Step 3: UI/Screen Clue
+- After root login, hover over `USER: ROOT` in the status bar to reveal:  
+  **31337** (FRAGMENT_GAMMA)
+- (Clue in terminal: "The final fragment is hidden under your true identity on the screen.")
 
 #### Final Assembly
-- Combine all three fragments: `NEON-CYBER-1337`
-- Use `cat secret.enc` command with all fragments discovered
-- Unlock the final secret key and achievement
+- Combine all three fragments: `NEON-MATRIX-31337`
+- Use `echo neon-matrix-31337` to unlock the master key and achievement
 
 ### Design Philosophy
 - **Progressive Discovery**: Each step builds on the previous
-- **Multiple Skills**: Tests different investigation techniques
+- **Multiple Skills**: Tests terminal, UI, and source investigation
 - **Logical Flow**: Clues lead naturally to next steps
 - **Rewarding Experience**: Clear feedback and celebration
 
@@ -133,14 +140,13 @@ The secret key challenge uses a **3-fragment system** requiring multiple investi
 ## 📸 Screenshots
 
 ### Main Terminal Interface
-![Terminal Interface](screenshots/terminal-main.png)
+![Terminal Interface](README_assets/Homepage.png)
 
 ### Command Execution
-![Commands](screenshots/commands-demo.gif)
-
+![Commands](README_assets/command-execution.gif)
 
 ### Secret Discovery
-![Secret Key](screenshots/secret-revealed.png)
+![Secret Key](README_assets/Secret-key-revealed.png)
 
 ## 🎨 Design Inspiration
 
@@ -151,7 +157,6 @@ The secret key challenge uses a **3-fragment system** requiring multiple investi
 ## 🔧 Development Workflow
 
 ### Git Workflow
-This project follows proper development practices:
 - Feature branches for new functionality
 - Pull requests for code review
 - Semantic commit messages
@@ -194,9 +199,9 @@ npm run build
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/Akshith-cdr)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/akshith-veerisetty)
+**Akshith Veerisetty**
+- GitHub: [@Akshith-cdr](https://github.com/Akshith-cdr)
+- LinkedIn: [Akshith Veerisetty](https://linkedin.com/in/akshith-veerisetty)
 
 ## 🙏 Acknowledgments
 
