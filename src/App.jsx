@@ -7,6 +7,7 @@ function App() {
   const [currentInput, setCurrentInput] = useState(""); // Current user input
   const [isTyping, setIsTyping] = useState(true); // Typing lock during boot
   const [showCursor, setShowCursor] = useState(true); // Blinking cursor
+  const [show404, setShow404] = useState(false);
   const [secretProgress, setSecretProgress] = useState(0); // Tracks secret challenge progress
   const [konami, setKonami] = useState([]); // Tracks Konami code sequence
   const [loginAttempts, setLoginAttempts] = useState(0); // Failed login attempts
@@ -631,6 +632,24 @@ function App() {
     }
   };
 
+  const handleClose = () => {
+    setShow404(true);
+  };
+
+  if (show404) {
+    return (
+      <div className="zoom-wrapper">
+        <div className="cyber-terminal" style={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
+          <div style={{ textAlign: "center", width: "100%" }}>
+            <h1 style={{ color: "#ff0040", fontSize: "2.5rem", marginBottom: "1rem" }}>404</h1>
+            <p style={{ color: "#00ff00", fontSize: "1.2rem" }}>Not Found</p>
+            <p style={{ color: "#fff" }}>The system could not locate the requested resource.<br />Press F5 to restart the terminal.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="zoom-wrapper">
       <div className="cyber-terminal">
@@ -641,7 +660,7 @@ function App() {
             <div className="window-controls">
               <button className="control-btn minimize">_</button>
               <button className="control-btn maximize">□</button>
-              <button className="control-btn close">×</button>
+              <button className="control-btn close" onClick={handleClose}>×</button>
             </div>
           </div>
         </div>

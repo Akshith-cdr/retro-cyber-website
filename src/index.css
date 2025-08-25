@@ -27,7 +27,6 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Hide scrollbars but keep functionality */
 body::-webkit-scrollbar {
   display: none;
 }

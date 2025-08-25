@@ -95,8 +95,8 @@ body {
   background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
   border: 1px outset #c0c0c0;
   color: #000000;
-  font-family: 'Perfect DOS VGA 437', monospace;
-  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
   display: flex;
@@ -116,7 +116,8 @@ body {
 
 .control-btn.close:hover {
   background: linear-gradient(180deg, #ff8080 0%, #ff4040 100%);
-  color: #ffffff;
+  color: #fff;
+  border: 1px inset #c0c0c0;
 }
 
 /* Terminal Body */
@@ -189,7 +190,6 @@ body {
   }
 }
 
-/* Input Line - Fixed cursor positioning */
 .input-line {
   display: flex;
   align-items: baseline;
@@ -225,7 +225,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  caret-color: transparent; /* Hide default cursor */
+  caret-color: transparent;
 }
 
 .input-display {
@@ -283,7 +283,6 @@ body {
   border-right: none;
 }
 
-/* Visual Effects */
 .scanlines {
   position: absolute;
   top: 0;
@@ -444,7 +443,6 @@ body {
   }
 }
 
-/* Special command highlights with proper 90s styling */
 .terminal-line.output pre:contains("═══") {
   color: var(--cyber-white);
   font-weight: bold;
