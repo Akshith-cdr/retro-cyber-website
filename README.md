@@ -1,4 +1,3 @@
-/* filepath: c:\Users\veeri\Documents\Web Dev\GDG_Project\retro_cyber_world\README.md */
 # 🌐 RETRO CYBER WORLD - Terminal Interface
 
 > *Enter the digital realm where neon dreams and cyber nightmares collide*
@@ -139,8 +138,6 @@ The secret key challenge uses a **3-fragment system** requiring multiple investi
 ### Command Execution
 ![Commands](screenshots/commands-demo.gif)
 
-### Matrix Mode Effect
-![Matrix Mode](screenshots/matrix-effect.gif)
 
 ### Secret Discovery
 ![Secret Key](screenshots/secret-revealed.png)
@@ -148,7 +145,6 @@ The secret key challenge uses a **3-fragment system** requiring multiple investi
 ## 🎨 Design Inspiration
 
 - **Cyberpunk 2077**: Futuristic terminal aesthetics
-- **The Matrix (1999)**: Green rain and digital themes
 - **Hacker Culture (1990s)**: Authentic terminal feel
 - **Tron Legacy**: Neon color schemes
 
@@ -196,16 +192,11 @@ npm run build
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Portfolio: [yourwebsite.com](https://yourwebsite.com)
+- GitHub: [@yourusername](https://github.com/Akshith-cdr)
+- LinkedIn: [Your LinkedIn](https://linkedin.com/in/akshith-veerisetty)
 
 ## 🙏 Acknowledgments
 
